@@ -6,53 +6,53 @@
     </div>
 
     <el-tabs v-model="activeTab">
-      <el-tab-pane label="全部" name="">
-        <div class="card">
-          <div class="toolbar">
-            <el-select v-model="searchSupplier" placeholder="选择供应商" clearable style="width: 180px">
-              <el-option v-for="s in supplierList" :key="s.id" :label="s.name" :value="s.id" />
-            </el-select>
-            <el-button type="primary" :icon="Search" @click="loadData">搜索</el-button>
-          </div>
-
-          <el-table :data="tableData" stripe v-loading="loading">
-            <el-table-column prop="batchNo" label="采购单号" width="160" />
-            <el-table-column prop="presaleBatchName" label="对应预售" width="150" />
-            <el-table-column prop="supplierName" label="供应商" width="150" />
-            <el-table-column label="采购明细" min-width="250">
-              <template #default="{ row }">
-                <el-tag v-for="(item, i) in row.items?.slice(0, 3)" :key="i" style="margin-right: 4px; margin-bottom: 4px">
-                  {{ item.productName }} {{ item.planQuantity }}
-                </el-tag>
-              </template>
-            </el-table-column>
-            <el-table-column label="金额" width="120">
-              <template #default="{ row }">
-                <span style="color: #f56c6c; font-weight: 600">¥{{ row.totalAmount?.toFixed(2) }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column prop="freshnessCondition" label="保鲜条件" width="180" show-overflow-tooltip />
-            <el-table-column label="状态" width="100">
-              <template #default="{ row }">
-                <el-tag :type="statusTag(row.status)">{{ statusLabel(row.status) }}</el-tag>
-              </template>
-            </el-table-column>
-            <el-table-column label="操作" width="260" fixed="right">
-              <template #default="{ row }">
-                <el-button link type="primary" @click="handleDetail(row)">详情</el-button>
-                <el-button v-if="row.status === 'DRAFT'" link type="success" @click="handleConfirm(row)">确认</el-button>
-                <el-button v-if="row.status === 'CONFIRMED'" link type="warning" @click="handleShip(row)">发货</el-button>
-                <el-button v-if="row.status === 'SHIPPED'" link @click="handleArrive(row)">到货</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-tab-pane>
+      <el-tab-pane label="全部" name="" />
       <el-tab-pane label="待确认" name="DRAFT" />
       <el-tab-pane label="已确认" name="CONFIRMED" />
       <el-tab-pane label="已发货" name="SHIPPED" />
       <el-tab-pane label="已到货" name="ARRIVED" />
     </el-tabs>
+
+    <div class="card">
+      <div class="toolbar">
+        <el-select v-model="searchSupplier" placeholder="选择供应商" clearable style="width: 180px">
+          <el-option v-for="s in supplierList" :key="s.id" :label="s.name" :value="s.id" />
+        </el-select>
+        <el-button type="primary" :icon="Search" @click="loadData">搜索</el-button>
+      </div>
+
+      <el-table :data="tableData" stripe v-loading="loading" row-key="id">
+        <el-table-column prop="batchNo" label="采购单号" width="160" />
+        <el-table-column prop="presaleBatchName" label="对应预售" width="150" />
+        <el-table-column prop="supplierName" label="供应商" width="150" />
+        <el-table-column label="采购明细" min-width="250">
+          <template #default="{ row }">
+            <el-tag v-for="(item, i) in row.items?.slice(0, 3)" :key="i" style="margin-right: 4px; margin-bottom: 4px">
+              {{ item.productName }} {{ item.planQuantity }}
+            </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="金额" width="120">
+          <template #default="{ row }">
+            <span style="color: #f56c6c; font-weight: 600">¥{{ row.totalAmount?.toFixed(2) }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="freshnessCondition" label="保鲜条件" width="180" show-overflow-tooltip />
+        <el-table-column label="状态" width="100">
+          <template #default="{ row }">
+            <el-tag :type="statusTag(row.status)">{{ statusLabel(row.status) }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="260" fixed="right">
+          <template #default="{ row }">
+            <el-button link type="primary" @click="handleDetail(row)">详情</el-button>
+            <el-button v-if="row.status === 'DRAFT'" link type="success" @click="handleConfirm(row)">确认</el-button>
+            <el-button v-if="row.status === 'CONFIRMED'" link type="warning" @click="handleShip(row)">发货</el-button>
+            <el-button v-if="row.status === 'SHIPPED'" link @click="handleArrive(row)">到货</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
 
     <el-dialog v-model="detailVisible" title="采购批次详情" width="700px">
       <div v-if="currentBatch">

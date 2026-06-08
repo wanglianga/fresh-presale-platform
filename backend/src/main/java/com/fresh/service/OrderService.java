@@ -2,7 +2,6 @@ package com.fresh.service;
 
 import com.fresh.entity.*;
 import com.fresh.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class OrderService {
 
     private final PresaleOrderRepository orderRepository;
@@ -21,6 +19,15 @@ public class OrderService {
     private final CommunityRepository communityRepository;
     private final LeaderRepository leaderRepository;
     private final PresaleBatchRepository presaleBatchRepository;
+
+    public OrderService(PresaleOrderRepository orderRepository, PresaleOrderItemRepository orderItemRepository, ProductRepository productRepository, CommunityRepository communityRepository, LeaderRepository leaderRepository, PresaleBatchRepository presaleBatchRepository) {
+        this.orderRepository = orderRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.productRepository = productRepository;
+        this.communityRepository = communityRepository;
+        this.leaderRepository = leaderRepository;
+        this.presaleBatchRepository = presaleBatchRepository;
+    }
 
     public List<PresaleOrder> listAll() {
         return orderRepository.findAll();

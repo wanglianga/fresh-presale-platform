@@ -2,7 +2,6 @@ package com.fresh.service;
 
 import com.fresh.entity.*;
 import com.fresh.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class SortingService {
 
     private final SortingRecordRepository sortingRecordRepository;
@@ -19,6 +17,14 @@ public class SortingService {
     private final SortingDiscrepancyRepository sortingDiscrepancyRepository;
     private final PurchaseBatchRepository purchaseBatchRepository;
     private final CommunityRepository communityRepository;
+
+    public SortingService(SortingRecordRepository sortingRecordRepository, SortingItemRepository sortingItemRepository, SortingDiscrepancyRepository sortingDiscrepancyRepository, PurchaseBatchRepository purchaseBatchRepository, CommunityRepository communityRepository) {
+        this.sortingRecordRepository = sortingRecordRepository;
+        this.sortingItemRepository = sortingItemRepository;
+        this.sortingDiscrepancyRepository = sortingDiscrepancyRepository;
+        this.purchaseBatchRepository = purchaseBatchRepository;
+        this.communityRepository = communityRepository;
+    }
 
     public List<SortingRecord> listAll() {
         return sortingRecordRepository.findAll();

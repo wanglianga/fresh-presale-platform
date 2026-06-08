@@ -2,7 +2,6 @@ package com.fresh.service;
 
 import com.fresh.entity.*;
 import com.fresh.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class LeaderService {
 
     private final LeaderRepository leaderRepository;
@@ -18,6 +16,14 @@ public class LeaderService {
     private final LeaderReceiptRepository leaderReceiptRepository;
     private final PickupRecordRepository pickupRecordRepository;
     private final SortingRecordRepository sortingRecordRepository;
+
+    public LeaderService(LeaderRepository leaderRepository, CommunityRepository communityRepository, LeaderReceiptRepository leaderReceiptRepository, PickupRecordRepository pickupRecordRepository, SortingRecordRepository sortingRecordRepository) {
+        this.leaderRepository = leaderRepository;
+        this.communityRepository = communityRepository;
+        this.leaderReceiptRepository = leaderReceiptRepository;
+        this.pickupRecordRepository = pickupRecordRepository;
+        this.sortingRecordRepository = sortingRecordRepository;
+    }
 
     public List<Leader> listLeaders() {
         return leaderRepository.findAll();

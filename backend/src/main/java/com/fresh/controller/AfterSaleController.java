@@ -5,8 +5,6 @@ import com.fresh.entity.AfterSaleRequest;
 import com.fresh.entity.CompensationRecord;
 import com.fresh.entity.RefundRecord;
 import com.fresh.service.AfterSaleService;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -14,10 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/aftersale")
-@RequiredArgsConstructor
 public class AfterSaleController {
 
     private final AfterSaleService afterSaleService;
+
+    public AfterSaleController(AfterSaleService afterSaleService) {
+        this.afterSaleService = afterSaleService;
+    }
 
     @GetMapping("/requests")
     public Result<List<AfterSaleRequest>> listRequests(
@@ -42,10 +43,14 @@ public class AfterSaleController {
         return Result.success(afterSaleService.createRequest(request));
     }
 
-    @Data
     public static class ApproveRequest {
         private BigDecimal approvedAmount;
         private String remark;
+
+        public BigDecimal getApprovedAmount() { return approvedAmount; }
+        public void setApprovedAmount(BigDecimal approvedAmount) { this.approvedAmount = approvedAmount; }
+        public String getRemark() { return remark; }
+        public void setRemark(String remark) { this.remark = remark; }
     }
 
     @PutMapping("/requests/{id}/approve")
@@ -53,9 +58,11 @@ public class AfterSaleController {
         return Result.success(afterSaleService.approveRequest(id, request.getApprovedAmount(), request.getRemark()));
     }
 
-    @Data
     public static class RejectRequest {
         private String remark;
+
+        public String getRemark() { return remark; }
+        public void setRemark(String remark) { this.remark = remark; }
     }
 
     @PutMapping("/requests/{id}/reject")

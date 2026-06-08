@@ -25,11 +25,10 @@ services:
       dockerfile: Dockerfile
     container_name: fresh-backend
     environment:
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_NAME: fresh_presale
+      DB_URL: jdbc:mysql://mysql:3306/fresh_presale?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
       DB_USERNAME: root
       DB_PASSWORD: password
+      DB_DRIVER: com.mysql.cj.jdbc.Driver
       TZ: Asia/Shanghai
     ports:
       - "8080:8080"

@@ -37,7 +37,7 @@
         </el-table-column>
         <el-table-column label="金额" width="120">
           <template #default="{ row }">
-            <div>实付: <span style="color: #f56c6c; font-weight: 600">¥{{ row.totalAmount?.toFixed(2) }}</span>
+            <div>实付: <span style="color: #f56c6c; font-weight: 600">¥{{ row.totalAmount?.toFixed(2) }}</span></div>
             <div v-if="row.refundAmount > 0" style="font-size: 12px; color: #909399">
               退款: ¥{{ row.refundAmount.toFixed(2) }}
             </div>
@@ -172,9 +172,9 @@ const statusLabel = (s) => ({
 }[s] || s)
 
 const statusTag = (s) => ({
-  PENDING: 'warning', PAID: 'primary', SORTING: '',
+  PENDING: 'warning', PAID: 'primary', SORTING: 'info',
   DELIVERED: 'info', PICKED_UP: 'success', REFUND: 'danger'
-}[s] || '')
+}[s] || 'info')
 
 const loadData = async () => {
   loading.value = true

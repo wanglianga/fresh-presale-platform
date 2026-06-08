@@ -3,17 +3,19 @@ package com.fresh.controller;
 import com.fresh.common.Result;
 import com.fresh.entity.PresaleOrder;
 import com.fresh.service.OrderService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-@RequiredArgsConstructor
 public class OrderController {
 
     private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @GetMapping
     public Result<List<PresaleOrder>> list(

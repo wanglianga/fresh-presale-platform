@@ -2,7 +2,6 @@ package com.fresh.service;
 
 import com.fresh.entity.*;
 import com.fresh.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class PurchaseService {
 
     private final PurchaseBatchRepository purchaseBatchRepository;
@@ -19,6 +17,14 @@ public class PurchaseService {
     private final PresaleBatchRepository presaleBatchRepository;
     private final SupplierRepository supplierRepository;
     private final ProductRepository productRepository;
+
+    public PurchaseService(PurchaseBatchRepository purchaseBatchRepository, PurchaseBatchItemRepository purchaseBatchItemRepository, PresaleBatchRepository presaleBatchRepository, SupplierRepository supplierRepository, ProductRepository productRepository) {
+        this.purchaseBatchRepository = purchaseBatchRepository;
+        this.purchaseBatchItemRepository = purchaseBatchItemRepository;
+        this.presaleBatchRepository = presaleBatchRepository;
+        this.supplierRepository = supplierRepository;
+        this.productRepository = productRepository;
+    }
 
     public List<PurchaseBatch> listAll() {
         return purchaseBatchRepository.findAll();

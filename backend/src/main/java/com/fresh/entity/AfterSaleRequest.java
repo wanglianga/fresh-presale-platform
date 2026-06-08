@@ -1,7 +1,6 @@
 package com.fresh.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "after_sale_request")
 public class AfterSaleRequest {
@@ -62,4 +60,132 @@ public class AfterSaleRequest {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRequestNo() {
+        return requestNo;
+    }
+
+    public void setRequestNo(String requestNo) {
+        this.requestNo = requestNo;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public String getRequestType() {
+        return requestType;
+    }
+
+    public void setRequestType(String requestType) {
+        this.requestType = requestType;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public BigDecimal getRequestAmount() {
+        return requestAmount;
+    }
+
+    public void setRequestAmount(BigDecimal requestAmount) {
+        this.requestAmount = requestAmount;
+    }
+
+    public BigDecimal getApprovedAmount() {
+        return approvedAmount;
+    }
+
+    public void setApprovedAmount(BigDecimal approvedAmount) {
+        this.approvedAmount = approvedAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(String imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public String getHandleRemark() {
+        return handleRemark;
+    }
+
+    public void setHandleRemark(String handleRemark) {
+        this.handleRemark = handleRemark;
+    }
+
+    public LocalDateTime getHandleTime() {
+        return handleTime;
+    }
+
+    public void setHandleTime(LocalDateTime handleTime) {
+        this.handleTime = handleTime;
+    }
+
+    public List<AfterSaleItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<AfterSaleItem> items) {
+        this.items = items;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

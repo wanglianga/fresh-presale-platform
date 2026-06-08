@@ -1,11 +1,9 @@
 package com.fresh.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data
 @Entity
 @Table(name = "after_sale_item")
 public class AfterSaleItem {
@@ -34,4 +32,68 @@ public class AfterSaleItem {
 
     @Column(length = 50)
     private String reason;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getAfterSaleRequestId() {
+        return afterSaleRequestId;
+    }
+
+    public void setAfterSaleRequestId(Long afterSaleRequestId) {
+        this.afterSaleRequestId = afterSaleRequestId;
+    }
+
+    public Long getOrderItemId() {
+        return orderItemId;
+    }
+
+    public void setOrderItemId(Long orderItemId) {
+        this.orderItemId = orderItemId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 }

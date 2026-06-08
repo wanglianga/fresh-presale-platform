@@ -5,18 +5,19 @@ import com.fresh.entity.SortingDiscrepancy;
 import com.fresh.entity.SortingItem;
 import com.fresh.entity.SortingRecord;
 import com.fresh.service.SortingService;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/sorting")
-@RequiredArgsConstructor
 public class SortingController {
 
     private final SortingService sortingService;
+
+    public SortingController(SortingService sortingService) {
+        this.sortingService = sortingService;
+    }
 
     @GetMapping("/records")
     public Result<List<SortingRecord>> listRecords(
@@ -41,10 +42,14 @@ public class SortingController {
         return Result.success(sortingService.create(record));
     }
 
-    @Data
     public static class CompleteSortingRequest {
         private List<SortingItem> items;
         private List<SortingDiscrepancy> discrepancies;
+
+        public List<SortingItem> getItems() { return items; }
+        public void setItems(List<SortingItem> items) { this.items = items; }
+        public List<SortingDiscrepancy> getDiscrepancies() { return discrepancies; }
+        public void setDiscrepancies(List<SortingDiscrepancy> discrepancies) { this.discrepancies = discrepancies; }
     }
 
     @PostMapping("/records/{id}/complete")

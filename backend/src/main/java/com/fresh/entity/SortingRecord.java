@@ -1,7 +1,6 @@
 package com.fresh.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
 @Table(name = "sorting_record")
 public class SortingRecord {
@@ -49,4 +47,100 @@ public class SortingRecord {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSortingNo() {
+        return sortingNo;
+    }
+
+    public void setSortingNo(String sortingNo) {
+        this.sortingNo = sortingNo;
+    }
+
+    public Long getPurchaseBatchId() {
+        return purchaseBatchId;
+    }
+
+    public void setPurchaseBatchId(Long purchaseBatchId) {
+        this.purchaseBatchId = purchaseBatchId;
+    }
+
+    public String getPurchaseBatchNo() {
+        return purchaseBatchNo;
+    }
+
+    public void setPurchaseBatchNo(String purchaseBatchNo) {
+        this.purchaseBatchNo = purchaseBatchNo;
+    }
+
+    public Long getCommunityId() {
+        return communityId;
+    }
+
+    public void setCommunityId(Long communityId) {
+        this.communityId = communityId;
+    }
+
+    public String getCommunityName() {
+        return communityName;
+    }
+
+    public void setCommunityName(String communityName) {
+        this.communityName = communityName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public LocalDateTime getSortingTime() {
+        return sortingTime;
+    }
+
+    public void setSortingTime(LocalDateTime sortingTime) {
+        this.sortingTime = sortingTime;
+    }
+
+    public List<SortingItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<SortingItem> items) {
+        this.items = items;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

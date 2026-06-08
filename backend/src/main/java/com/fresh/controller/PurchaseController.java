@@ -3,17 +3,19 @@ package com.fresh.controller;
 import com.fresh.common.Result;
 import com.fresh.entity.PurchaseBatch;
 import com.fresh.service.PurchaseService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/purchases")
-@RequiredArgsConstructor
 public class PurchaseController {
 
     private final PurchaseService purchaseService;
+
+    public PurchaseController(PurchaseService purchaseService) {
+        this.purchaseService = purchaseService;
+    }
 
     @GetMapping
     public Result<List<PurchaseBatch>> list(

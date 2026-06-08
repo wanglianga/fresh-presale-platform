@@ -1,11 +1,9 @@
 package com.fresh.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data
 @Entity
 @Table(name = "sorting_item")
 public class SortingItem {
@@ -43,4 +41,92 @@ public class SortingItem {
 
     @Column(length = 500)
     private String remark;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getSortingRecordId() {
+        return sortingRecordId;
+    }
+
+    public void setSortingRecordId(Long sortingRecordId) {
+        this.sortingRecordId = sortingRecordId;
+    }
+
+    public Long getOrderItemId() {
+        return orderItemId;
+    }
+
+    public void setOrderItemId(Long orderItemId) {
+        this.orderItemId = orderItemId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Integer getExpectedQuantity() {
+        return expectedQuantity;
+    }
+
+    public void setExpectedQuantity(Integer expectedQuantity) {
+        this.expectedQuantity = expectedQuantity;
+    }
+
+    public Integer getActualQuantity() {
+        return actualQuantity;
+    }
+
+    public void setActualQuantity(Integer actualQuantity) {
+        this.actualQuantity = actualQuantity;
+    }
+
+    public BigDecimal getExpectedWeight() {
+        return expectedWeight;
+    }
+
+    public void setExpectedWeight(BigDecimal expectedWeight) {
+        this.expectedWeight = expectedWeight;
+    }
+
+    public BigDecimal getActualWeight() {
+        return actualWeight;
+    }
+
+    public void setActualWeight(BigDecimal actualWeight) {
+        this.actualWeight = actualWeight;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

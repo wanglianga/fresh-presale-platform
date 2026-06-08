@@ -3,17 +3,19 @@ package com.fresh.controller;
 import com.fresh.common.Result;
 import com.fresh.entity.Product;
 import com.fresh.service.ProductService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-@RequiredArgsConstructor
 public class ProductController {
 
     private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public Result<List<Product>> list(@RequestParam(required = false) String category) {

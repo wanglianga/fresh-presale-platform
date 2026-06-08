@@ -4,18 +4,21 @@ import com.fresh.common.Result;
 import com.fresh.entity.*;
 import com.fresh.service.BasicService;
 import com.fresh.service.LeaderService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/basic")
-@RequiredArgsConstructor
 public class BasicController {
 
     private final BasicService basicService;
     private final LeaderService leaderService;
+
+    public BasicController(BasicService basicService, LeaderService leaderService) {
+        this.basicService = basicService;
+        this.leaderService = leaderService;
+    }
 
     @GetMapping("/presale-batches")
     public Result<List<PresaleBatch>> listPresaleBatches() {

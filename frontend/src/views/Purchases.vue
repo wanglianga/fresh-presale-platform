@@ -175,8 +175,8 @@ const statusLabel = (s) => ({
 }[s] || s)
 
 const statusTag = (s) => ({
-  DRAFT: 'warning', CONFIRMED: 'primary', SHIPPED: '', ARRIVED: 'success'
-}[s] || '')
+  DRAFT: 'warning', CONFIRMED: 'primary', SHIPPED: 'warning', ARRIVED: 'success'
+}[s] || 'info')
 
 const loadData = async () => {
   loading.value = true

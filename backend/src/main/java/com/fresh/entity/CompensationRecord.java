@@ -1,14 +1,12 @@
 package com.fresh.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "compensation_record")
 public class CompensationRecord {
@@ -52,4 +50,116 @@ public class CompensationRecord {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCompensationNo() {
+        return compensationNo;
+    }
+
+    public void setCompensationNo(String compensationNo) {
+        this.compensationNo = compensationNo;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public Long getAfterSaleRequestId() {
+        return afterSaleRequestId;
+    }
+
+    public void setAfterSaleRequestId(Long afterSaleRequestId) {
+        this.afterSaleRequestId = afterSaleRequestId;
+    }
+
+    public Long getDiscrepancyId() {
+        return discrepancyId;
+    }
+
+    public void setDiscrepancyId(Long discrepancyId) {
+        this.discrepancyId = discrepancyId;
+    }
+
+    public String getCompensationType() {
+        return compensationType;
+    }
+
+    public void setCompensationType(String compensationType) {
+        this.compensationType = compensationType;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public BigDecimal getCompensationAmount() {
+        return compensationAmount;
+    }
+
+    public void setCompensationAmount(BigDecimal compensationAmount) {
+        this.compensationAmount = compensationAmount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public LocalDateTime getCompensateTime() {
+        return compensateTime;
+    }
+
+    public void setCompensateTime(LocalDateTime compensateTime) {
+        this.compensateTime = compensateTime;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

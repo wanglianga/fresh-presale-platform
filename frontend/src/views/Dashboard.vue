@@ -98,7 +98,7 @@ const stats = reactive({
 const orderStatusStats = reactive([
   { status: 'PENDING', label: '待付款', count: 0, tagType: 'warning' },
   { status: 'PAID', label: '已付款', count: 0, tagType: 'primary' },
-  { status: 'SORTING', label: '分拣中', count: 0, tagType: '' },
+  { status: 'SORTING', label: '分拣中', count: 0, tagType: 'info' },
   { status: 'DELIVERED', label: '已送达', count: 0, tagType: 'info' },
   { status: 'PICKED_UP', label: '已自提', count: 0, tagType: 'success' },
   { status: 'REFUND', label: '已退款', count: 0, tagType: 'danger' }

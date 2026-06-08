@@ -16,10 +16,9 @@
 - Axios HTTP 请求
 
 ### 后端
-- Spring Boot 3.2.x
+- Spring Boot 3.4.x
 - Spring Data JPA
-- MySQL 8.0
-- Lombok
+- MySQL 8.0 / H2 内存数据库
 - SpringDoc OpenAPI (Swagger)
 
 ### 部署
@@ -95,7 +94,7 @@ docker compose down -v
 
 #### 前置要求
 
-- JDK 17+
+- JDK 21+
 - Maven 3.8+
 - Node.js 18+
 - MySQL 8.0+

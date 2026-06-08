@@ -2,7 +2,6 @@ package com.fresh.service;
 
 import com.fresh.entity.*;
 import com.fresh.repository.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class AfterSaleService {
 
     private final AfterSaleRequestRepository afterSaleRequestRepository;
@@ -20,6 +18,14 @@ public class AfterSaleService {
     private final RefundRecordRepository refundRecordRepository;
     private final CompensationRecordRepository compensationRecordRepository;
     private final PresaleOrderRepository orderRepository;
+
+    public AfterSaleService(AfterSaleRequestRepository afterSaleRequestRepository, AfterSaleItemRepository afterSaleItemRepository, RefundRecordRepository refundRecordRepository, CompensationRecordRepository compensationRecordRepository, PresaleOrderRepository orderRepository) {
+        this.afterSaleRequestRepository = afterSaleRequestRepository;
+        this.afterSaleItemRepository = afterSaleItemRepository;
+        this.refundRecordRepository = refundRecordRepository;
+        this.compensationRecordRepository = compensationRecordRepository;
+        this.orderRepository = orderRepository;
+    }
 
     public List<AfterSaleRequest> listAllRequests() {
         return afterSaleRequestRepository.findAll();
